@@ -1,0 +1,482 @@
+:root {
+    --primary: #8b5a2b;
+    --secondary: #f5e6d0;
+    --accent: #c19a6b;
+    --text: #333333;
+    --light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    background-color: var(--secondary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Cover Screen */
+.cover-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: var(--light);
+    text-align: center;
+    padding: 20px;
+    transition: all 0.5s ease;
+}
+
+.cover-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.cover-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 500px;
+    animation: fadeIn 1.5s ease;
+}
+
+.open-invitation-btn {
+    background-color: transparent;
+    border: 2px solid var(--light);
+    color: var(--light);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease;
+}
+
+.open-invitation-btn:hover {
+    background-color: var(--light);
+    color: var(--primary);
+}
+
+.cover-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 30px 0;
+    animation: fadeIn 2s ease;
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.3s;
+}
+
+.container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigation */
+.nav-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background-color: var(--primary);
+    color: var(--light);
+    transform: translateY(-5px);
+}
+
+/* Invitation Card */
+.invitation-card {
+    background-color: var(--light);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    margin: 30px auto;
+    transform-style: preserve-3d;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--light);
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('assets/images/floral-pattern.png') repeat;
+    opacity: 0.2;
+    background-size: 200px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 15px 0;
+    color: var(--primary);
+}
+
+.divider {
+    width: 80px;
+    height: 2px;
+    background-color: var(--accent);
+    margin: 20px auto;
+}
+
+.content {
+    padding: 20px;
+    position: relative;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.names {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin: 20px 0;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+}
+
+.details {
+    margin: 30px 0;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.detail-text h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.rsvp {
+    background-color: var(--secondary);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    color: var(--light);
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8rem;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* Countdown */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    text-align: center;
+    background-color: var(--secondary);
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 70px;
+}
+
+.countdown-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    font-family: 'Playfair Display', serif;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    color: var(--text);
+}
+
+/* Gallery */
+.gallery {
+    display: none;
+    padding: 15px;
+}
+
+.gallery.active {
+    display: block;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Gift Section */
+.gift-section {
+    display: none;
+    padding: 15px;
+    text-align: center;
+}
+
+.gift-section.active {
+    display: block;
+}
+
+.bank-account {
+    background-color: var(--secondary);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.bank-detail {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.bank-label {
+    font-weight: 500;
+    min-width: 90px;
+    color: var(--primary);
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+}
+
+.music-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+    .cover-title {
+        font-size: 3.5rem;
+    }
+    
+    .cover-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .cover-names {
+        font-size: 2.5rem;
+    }
+    
+    .open-invitation-btn {
+        padding: 15px 40px;
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .content {
+        padding: 30px;
+    }
+    
+    .header {
+        padding: 60px 30px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .nav-container {
+        gap: 15px;
+        padding: 10px 25px;
+    }
+    
+    .countdown {
+        gap: 15px;
+    }
+    
+    .countdown-item {
+        min-width: 80px;
+        padding: 15px;
+    }
+    
+    .countdown-number {
+        font-size: 2rem;
+    }
+}
